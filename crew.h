@@ -16,11 +16,12 @@ private:
    vector<Pirate>members;
 
 public:
-    Crew(const string& name, Pirate captain)
+    Crew(const string& name, const Pirate captain)
     :name (name), captain (captain)
 
     {
-        if (name.empty() != runtime_error)
+        if (name.empty())
+        throw runtime_error("wrong");
     }
 };
 

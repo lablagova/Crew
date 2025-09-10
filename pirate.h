@@ -8,7 +8,7 @@
 using namespace std;
 
 enum class DFruit {None,Paramecia,Zoan,Logia};
-const vector<std::string> dfruit_names = {"None", "Paramecia", "Zoan", "Logia"};
+inline const vector<string> dfruit_names = {"None", "Paramecia", "Zoan", "Logia"};
 
 class Pirate {
 private: 
