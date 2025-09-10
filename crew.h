@@ -11,13 +11,17 @@ using namespace std;
 class Crew {
 
 private:
-   string name; 
+   string name; // nicht leer
    Pirate captain;
    vector<Pirate>members;
 
 public:
-    Crew(string& name,  )
+    Crew(const string& name, Pirate captain)
+    :name (name), captain (captain)
 
+    {
+        if (name.empty() != runtime_error)
+    }
 };
 
 
