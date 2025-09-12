@@ -23,6 +23,16 @@ public:
         if (name.empty())
         throw runtime_error("wrong");
     }
+
+    int total_bounty() const
+    {
+        int sum = 2 * captain.get_bounty();
+        for (size_t i = 0; i < members.size(); ++i)
+        {
+            sum += members[i].get_bounty();
+        }
+        return sum;
+    }
 };
 
 

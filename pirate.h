@@ -20,10 +20,14 @@ public:
     Pirate(const string& name, int power, DFruit fruit = DFruit::None )
     : name (name), power (power), devil_fruit (fruit)
     {
-    if (name.empty() || power < 1 || power > 9000)
-        throw runtime_error("false") ;
+        if (name.empty() || power < 1 || power > 9000)
+            throw runtime_error("false") ;
     }
+
+int get_bounty() const
+    {
+        return power * (static_cast<int>(devil_fruit) +1);
+    }
+
 };
-
-
 #endif // PIRATE_H  
