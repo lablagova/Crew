@@ -8,48 +8,21 @@
 using namespace std;
 
 enum class DFruit {None,Paramecia,Zoan,Logia};
-extern const vector<string> dfruit_names = {"None", "Paramecia", "Zoan", "Logia"};
+const vector<string> dfruit_names = {"None", "Paramecia", "Zoan", "Logia"};
 
 class Pirate {
-private: 
-    string name; // nicht leer
-    int power; // 1...9000
-    DFruit devil_fruit; 
+    public:
+        Pirate (string name, int power, DFruit devil_fruit);
+        int get_bounty() const;
+        bool train(int days);
+        bool operator==(const Pirate& p) const;
+        friend ostream& operator<< (ostream& o, const Pirate& p);
 
-public:
-    Pirate(const string& name, int power, DFruit fruit = DFruit::None )
-    : name (name), power (power), devil_fruit (fruit)
-    {
-        if (name.empty() || power < 1 || power > 9000)
-            throw runtime_error("false") ;
-    }
+    private:
+        string name;
+        int power;
+        DFruit devil_fruit = DFruit::None;
+    };
 
-int get_bounty() const
-    {
-        return power * (static_cast<int>(devil_fruit) +1);
-    }
 
-bool train(int days)
-    {
-        if (days < 0 || power + 5LL * days > 9000) return false;
-        power += 5 * days;
-        return true;
-    }
-friend bool operator==(const Pirate& a, const Pirate& b): true
-    {
-        return a.name == b.name
-            && a.power == b.power
-            && a.devil_fruit == b.devil_fruit;
-    }
-ostream& operator<< (ostream& o, const Pirate& p)
-    {
-        o<< "[";
-        o<< p.name << ",";
-        o << p.power << ","; 
-        o << dfruit_names [static_cast<int>(p.devil_fruit)] << ","; 
-        o << p.get_bounty(); 
-        o<< "]";
-        return o;
-    }
-};
-#endif // PIRATE_H  
+#endif // PIRATE_H
