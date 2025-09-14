@@ -8,7 +8,7 @@
 using namespace std;
 
 enum class DFruit {None,Paramecia,Zoan,Logia};
-inline const vector<string> dfruit_names = {"None", "Paramecia", "Zoan", "Logia"};
+extern const vector<string> dfruit_names = {"None", "Paramecia", "Zoan", "Logia"};
 
 class Pirate {
 private: 
@@ -40,6 +40,16 @@ friend bool operator==(const Pirate& a, const Pirate& b): true
         return a.name == b.name
             && a.power == b.power
             && a.devil_fruit == b.devil_fruit;
+    }
+ostream& operator<< (ostream& o, const Pirate& p)
+    {
+        o<< "[";
+        o<< p.name << ",";
+        o << p.power << ","; 
+        o << dfruit_names [static_cast<int>(p.devil_fruit)] << ","; 
+        o << p.get_bounty(); 
+        o<< "]";
+        return o;
     }
 };
 #endif // PIRATE_H  

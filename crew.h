@@ -24,7 +24,14 @@ public:
         throw runtime_error("wrong");
     }
 
-    int total_bounty() const
+void add member(const Pirate& p)
+    {
+
+
+
+    }
+
+int total_bounty() const
     {
         int sum = 2 * captain.get_bounty();
         for (size_t i = 0; i < members.size(); ++i)
@@ -33,6 +40,23 @@ public:
         }
         return sum;
     }
- 
+
+ostream& operator<< (ostream& o, const Crew& c)
+    {
+        o<< "[";
+        o<< c.name << ",";
+        o<< c.captain << ",";
+        o<< "{";
+        for (size_t i {0}; i < c.members.size(); ++i) 
+            {
+                o<< c.members[i];
+                if (i < (c.members.size() - 1)) 
+                o<< ", "; 
+            }
+        o<< "}";
+        o<< c.total_bounty();
+        o<< "]";
+    return o; 
+    }
 };
 #endif // CREW_H
