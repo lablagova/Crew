@@ -33,8 +33,6 @@ public:
         }
         return sum;
     }
+ 
 };
-
-
-
 #endif // CREW_H

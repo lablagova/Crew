@@ -29,5 +29,17 @@ int get_bounty() const
         return power * (static_cast<int>(devil_fruit) +1);
     }
 
+bool train(int days)
+    {
+        if (days < 0 || power + 5LL * days > 9000) return false;
+        power += 5 * days;
+        return true;
+    }
+friend bool operator==(const Pirate& a, const Pirate& b): true
+    {
+        return a.name == b.name
+            && a.power == b.power
+            && a.devil_fruit == b.devil_fruit;
+    }
 };
 #endif // PIRATE_H  
