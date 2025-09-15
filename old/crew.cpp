@@ -18,12 +18,12 @@ Crew (const string& name, const Pirate captain)
 void add_member(const Pirate& p)
     {
         if (p == captain)
-        throw runtime_error("captain is already there");
+             throw runtime_error("captain is already there");
 
-        for (size_t i = 0; i < members.size(); ++i)
+        for (int i = 0; i < members.size(); ++i)
         {
             if (members[i] == p)
-            throw runtime_error("this member is already there");
+                throw runtime_error("this member is already there");
         }
         members.push_back(p);
     }
@@ -31,7 +31,7 @@ void add_member(const Pirate& p)
 int total_bounty() const
     {
         int sum = 2 * captain.get_bounty();
-        for (size_t i = 0; i < members.size(); ++i)
+        for (int i = 0; i < members.size(); ++i)
             {
                 sum += members[i].get_bounty();
             }

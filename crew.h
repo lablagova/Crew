@@ -11,6 +11,8 @@ using namespace std;
 class Crew {
     public:
         Crew (string name, Pirate captain);
+        friend ostream& operator<< (ostream o, const Crew& c)
+
 
     private:
         string name;
