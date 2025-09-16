@@ -7,8 +7,10 @@
 using namespace std;
 
 Pirate::Pirate (string name, int power, DFruit devil_fruit)
+: name(name), power(power), devil_fruit(devil_fruit)
+
         {
-            if (name.empty())
+            if (this->name.empty())
                 throw(runtime_error("is empty"));
             if (power < 0 || power > 9000)
                 throw(runtime_error("power is invalid"));
