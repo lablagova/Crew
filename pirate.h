@@ -8,11 +8,11 @@
 using namespace std;
 
 enum class DFruit {None,Paramecia,Zoan,Logia};
-const vector<string> dfruit_names = {"None", "Paramecia", "Zoan", "Logia"};
+inline const vector<string> dfruit_names = {"None", "Paramecia", "Zoan", "Logia"};
 
 class Pirate {
     public:
-        Pirate (string name, int power, DFruit devil_fruit);
+        Pirate (string name, int power, DFruit devil_fruit = DFruit::None);
         int get_bounty() const;
         bool train(int days);
         bool operator==(const Pirate& p) const;

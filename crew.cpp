@@ -7,12 +7,13 @@
 
 using namespace std;
 
-Crew (string name, Pirate captain)
+Crew::Crew (string name, Pirate captain)
+    : name(name), captain(captain)
         {
             if (name.empty())
                 throw runtime_error("is empty");
         }
-void add_member(const Pirate& p)
+void Crew::add_member(const Pirate& p)
 {
     if (p == captain)
         throw runtime_error("captain is there");
@@ -24,14 +25,28 @@ void add_member(const Pirate& p)
     members.push_back(p);
 }
 
-int total_bounty() const
-{
+int Crew::total_bounty() const
+{   
+    int sum = 0;
+    sum += captain.get_bounty() * 2;
 
-
+    for (int i = 0; i < members.size(); ++i)
+    {
+        sum += members[i].get_bounty();
+    }
+    return sum;
 }
 
-ostream& operator<< (ostream o, const Crew& c)
+ostream& operator<< (ostream& o, const Crew& c)
 {
-    o << "[" << c.name << "," << c.captain << "," << "list of members"  << "," << c.get_bounty() << "]"; 
+    o << "[" << c.name << ", " << c.captain << ", "  <<  "{";
+    for (int i = 0; i < c.members.size(); ++i)
+            {
+                o << c.members[i];
+                if (i + 1 < c.members.size())
+                    o << ", ";
+            }
+    o << "}";
+    o << ", " << c.total_bounty() << "]";
     return o; 
 }

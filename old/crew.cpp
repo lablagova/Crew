@@ -41,17 +41,17 @@ int total_bounty() const
 ostream& operator<< (ostream& o, const Crew& c)
     {
         o<< "[";
-        o<< c.name << ",";
-        o<< c.captain << ",";
+        o<< c.name << ", ";
+        o<< c.captain << ", ";
         o<< "{";
         for (size_t i {0}; i < c.members.size(); ++i) 
             {
                 o<< c.members[i];
-                if (i < (c.members.size() - 1)) 
+                if (i + 1 < c.members.size()) 
                 o<< ", "; 
             }
         o<< "}";
-        o<< c.total_bounty();
+        o<< ", " << c.total_bounty();
         o<< "]";
     return o; 
     }

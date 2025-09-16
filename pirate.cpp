@@ -6,7 +6,7 @@
 
 using namespace std;
 
-Pirate::Pirate(string name, int power, DFruit devil_fruit)
+Pirate::Pirate (string name, int power, DFruit devil_fruit)
         {
             if (name.empty())
                 throw(runtime_error("is empty"));
@@ -14,14 +14,14 @@ Pirate::Pirate(string name, int power, DFruit devil_fruit)
                 throw(runtime_error("power is invalid"));
         }
 
-int get_bounty() const
+int Pirate::get_bounty() const
 {
     int money;
     money = power * (static_cast<int>(devil_fruit) + 1);
     return money;
 }
 
-bool train(int days)
+bool Pirate::train(int days)
 {  
     if (days < 0)
         return false;
@@ -31,7 +31,7 @@ bool train(int days)
     return true;
 }
 
-bool operator==(const Pirate& p) const
+bool Pirate::operator==(const Pirate& p) const
 {
     if (name == p.name && power == p.power && devil_fruit == p.devil_fruit)
         return true;
@@ -41,7 +41,7 @@ bool operator==(const Pirate& p) const
 ostream& operator<< (ostream& o, const Pirate& p)
 {
     string fruitname;
-    switch (static_cast<int>p.devil_fruit)
+    switch (static_cast<int>(p.devil_fruit))
 {
         case 0:
             fruitname = "None" ; break; 
